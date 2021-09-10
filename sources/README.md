@@ -1,7 +1,10 @@
 # sources
 This folder holds the source code of programs used to generate [output](../output)
 
-# Languages
+# Completed Languages : 
+ * --Go--
+
+# Future Languages : 
  * ActionScript
  * AutoHotKey
  * Java
@@ -10,7 +13,6 @@ This folder holds the source code of programs used to generate [output](../outpu
  * C++
  * C#
  * Rust
- * Go
  * Haskell
  * JavaScript
  * OCaml

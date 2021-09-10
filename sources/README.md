@@ -1,10 +1,10 @@
 # sources
 This folder holds the source code of programs used to generate [output](../output)
 
-# Completed Languages : 
- * --Go--
+# Completed Languages:
+ * ~~Go~~
 
-# Future Languages : 
+# Future Languages:
  * ActionScript
  * AutoHotKey
  * Java

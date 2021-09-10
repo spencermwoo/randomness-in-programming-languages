@@ -1,5 +1,5 @@
 # randomness-in-languages
-An example of random number generation in different programming [languages](/sources#languages)
+An example of random number generation in different programming [languages](/sources#future-languages)
 
 ## Pseudo Random Number Generators
 Trials : 

@@ -4,9 +4,9 @@
 3. Submit a [PR](#PR) as described below
 
 # Submit A Pull Request
-1. Fork this [repository](https://github.com/spencermwoo/randomness-in-languages)
+1. Fork this [repository](https://github.com/spencermwoo/randomness-in-programming-languages)
 2. Clone your fork
- * `git clone https://github.com/<your_github_account>/randomness-in-languages`
+ * `git clone https://github.com/<your_github_account>/randomness-in-programming-languages`
 
 3. Create a new branch for the language 
  * `git checkout -b javascript`
@@ -39,7 +39,7 @@ For each of these trials we calculate the frequency of each number and output th
 **Output:**
 For each of the above (3) trials, we output the probability occurance of each number.
 
-Here is an [example pull request](https://github.com/spencermwoo/randomness-in-languages/pull/1/files).
+Here is an [example pull request](https://github.com/spencermwoo/randomness-in-programming-languages/pull/1/files).
 
 ## Program
 1. The program generates N random numbers in range R
@@ -50,12 +50,12 @@ Here is an [example pull request](https://github.com/spencermwoo/randomness-in-l
 5. The output file is named after the language and trial
  * `js_10_1000000`
 
-Here is an [example pull request](https://github.com/spencermwoo/randomness-in-languages/pull/1/files).
+Here is an [example pull request](https://github.com/spencermwoo/randomness-in-programming-languages/pull/1/files).
 
 ## Output
 The commit being PR'd should have 1 source file for the language and 3 output files in total (1 for each trial).
 
-Here is an [example pull request](https://github.com/spencermwoo/randomness-in-languages/pull/1/files).
+Here is an [example pull request](https://github.com/spencermwoo/randomness-in-programming-languages/pull/1/files).
 
 # Additional Contributions
 We also welcome any formatting changes or improvements to any existing source code.

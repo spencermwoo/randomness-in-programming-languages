@@ -3,12 +3,12 @@ This folder holds the source code of programs used to generate [outputs](../outp
 
 # Completed Languages:
  * ~~Go~~
+ * ~~Python~~
 
 # Future Languages:
  * ActionScript
  * AutoHotKey
  * Java
- * Python
  * C
  * C++
  * C#

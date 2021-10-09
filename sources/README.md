@@ -3,8 +3,9 @@ This folder holds the source code of programs used to generate [outputs](../outp
 
 # Completed Languages:
  * ~~Go~~
- * ~~Python~~
  * ~~Java~~
+ * ~~JavaScript~~
+ * ~~Python~~
  
 # Future Languages:
  * ActionScript
@@ -14,7 +15,6 @@ This folder holds the source code of programs used to generate [outputs](../outp
  * C#
  * Rust
  * Haskell
- * JavaScript
  * OCaml
  * Perl
  * PHP

@@ -14,26 +14,27 @@ def multiplot(numbers, trials):
 	for language in languages:
 		x = []
 		y = []
-		with open(f'{language}_{numbers}_{trials}') as file:
-			for line in file:
-				n, probability = parse(line)
+		filename = f'{language}_{numbers}_{trials}'
+		with open(filename) as file:
+			print(filename)
+			# for line in file:
+			# 	n, probability = parse(line)
 
-				x.append(n)
-				y.append(abs(expected - probability))
+			# 	x.append(n)
+			# 	y.append(abs(expected - probability))
 
-		# deviations(y)	
-		plt.plot(x, y, label=language)
 
-		# deviations(y)
+	# plot all
+	# 	plt.plot(x, y, label=language)
 
-	plt.xlabel('value')
-	plt.ylabel('error')
-	plt.legend(loc='best')
+	# plt.xlabel('value')
+	# plt.ylabel('error')
+	# plt.legend(loc='best')
 
-	title = f'{numbers} range : {trials} iterations'
-	plt.title(title)
+	# title = f'{numbers} range : {trials} iterations'
+	# plt.title(title)
 
-	plt.show()
+	# plt.show()
 	# plt.savefig(f'{title}.png', bbox_inches='tight')
 
 # np.std(a, dtype=np.float64)
@@ -123,7 +124,12 @@ def calculate_variance(deviations):
 	print(n, probability, expected)
 	return 1
 
-multiplot(10, 1000000)
+def plot_all():
+	multiplot(10, 1000000)
+	multiplot(1000, 1000000)
+	multiplot(10, 1000000000)
+
+plot_all()
 
 # py analysis.py --file ../outputs/go_10_1000000000
 # if __name__ == '__main__':

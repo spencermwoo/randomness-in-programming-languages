@@ -2,59 +2,44 @@ import argparse
 import matplotlib.pyplot as plt
 import os
 
-languages = ['go', 'java', 'javascript', 'python']
-
-def multiplot(numbers, trials):
-	os.chdir('../outputs/')
-
-	# for language in trials:
-	# 	language, numbers, trials = parse_filename(language)
-	expected = 1 / numbers
-
+def multiplot(languages, numbers, trials):
 	for language in languages:
-		x = []
-		y = []
+		x, y = [], []
 		filename = f'{language}_{numbers}_{trials}'
 		with open(filename) as file:
-			print(filename)
-			# for line in file:
-			# 	n, probability = parse(line)
+			for line in file:
+				n, probability = parse(line)
 
-			# 	x.append(n)
-			# 	y.append(abs(expected - probability))
+				x.append(n)
+				y.append(probability)
 
+		_plot(x, y, language)
 
-	# plot all
-	# 	plt.plot(x, y, label=language)
-
-	# plt.xlabel('value')
-	# plt.ylabel('error')
-	# plt.legend(loc='best')
-
-	# title = f'{numbers} range : {trials} iterations'
-	# plt.title(title)
-
-	# plt.show()
-	# plt.savefig(f'{title}.png', bbox_inches='tight')
+	_plot_graph('number', 'probability', f'{numbers}_{trials}', True)
 
 # np.std(a, dtype=np.float64)
-def analysis(file):
-	language, numbers, trials = parse_filename(file.name)
-	expected = 1 / numbers
+def create_analysis(language, numbers, trials, include_expected=False):
+	x, y = [], []
 
-	x = []
-	y = []
-	for line in file:
-		n, probability = parse(line)
+	save_language=language
+	if include_expected:
+		language='expected'
 
-		x.append(n)
-		y.append(abs(expected - probability))
-		# deviations.append(calculate_deviation(n, probability, expected))
+	filename = f'{language}_{numbers}_{trials}'
+	with open(filename) as file:
+		for line in file:
+			n, probability = parse(line)
 
-	plot(x, deviations, 'value', 'error', f'{language}_{numbers}_{trials}')
-	# individual plots, multi plot across languages
+			x.append(n)
+			y.append(probability)
+			# deviations.append(calculate_deviation(n, probability, expected))
 
-	# read all files in directory
+	_plot(x, y, language)
+
+	if include_expected:
+		create_analysis(save_language, numbers, trials)
+	else:
+		_plot_graph('number', 'probability', f'{language}_{numbers}_{trials}', True)
 
 def deviations(errors):
 	return sum(errors) / len(errors)
@@ -62,27 +47,22 @@ def deviations(errors):
 # error : deviations.append(abs(expected - probability))
 # average error for langauge trial : error summation / avg
 
-def plot(x, y, x_name, y_name, title):
-	plt.plot(x, y)
+# https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.plot.html
+def _plot(x, y, label):
+	plt.plot(x, y, label=label)
 
-	plt.xlabel(x_name)
-	plt.ylabel(y_name)
+def _plot_graph(x_axis, y_axis, title, save=False):
+	plt.legend(loc='best')
+
+	plt.xlabel(x_axis)
+	plt.ylabel(y_axis)
 
 	plt.title(title)
 
-	# plt.show()
+	if save:
+		plt.savefig(f'graphs/{title}.png', bbox_inches='tight')
 
-	plt.savefig(f'{title}.png', bbox_inches='tight')
-
-def parse_filename(filename):
-	filename = filename.split("/")[-1]
-
-	s = filename.split("_")
-	language = s[0]
-	numbers = int(s[1])
-	trials = int(s[2])
-
-	return [language, numbers, trials]
+	plt.clf()
 
 def parse(line):
 	s = line.split(":")
@@ -124,12 +104,63 @@ def calculate_variance(deviations):
 	print(n, probability, expected)
 	return 1
 
-def plot_all():
-	multiplot(10, 1000000)
-	multiplot(1000, 1000000)
-	multiplot(10, 1000000000)
+def parse_output_filenames():
+	'''
+	 Expecting to be within /outputs/
+	'''
+	ls = os.listdir()
 
-plot_all()
+	languages = set()
+	options = set()
+	for file in ls:
+		if "_" in file:
+			fileparts = file.split("_")
+			
+			language = fileparts[0]
+			numbers = int(fileparts[1])
+			trials = int(fileparts[2])
+
+			option_tuple = (numbers, trials)
+
+			languages.add(language)
+			options.add(option_tuple)
+
+	return (languages, options)
+
+def plot_all_individual(include_expected=False):
+	# ../outputs/
+	os.chdir('../outputs/')
+	languages, options = parse_output_filenames()
+
+	for language in languages:
+		for option in options:
+			numbers = option[0]
+			trials = option[1]
+			create_analysis(language, numbers, trials, include_expected)
+
+def plot_all_multi():
+	# ../outputs/
+	os.chdir('../outputs/')
+	languages, options = parse_output_filenames()
+	
+	for option in options:
+		numbers = option[0]
+		trials = option[1]
+		multiplot(languages, numbers, trials)
+
+def plot_specific(language, number, trial):
+	create_analysis(language, numbers, trials)
+
+	# multiplot(languages, numbers, trials)
+
+# plot_all_individual(True)
+plot_all_multi()
+
+# languages = get_languages()
+# print(languages)
+
+# options = get_options()
+# print(options)
 
 # py analysis.py --file ../outputs/go_10_1000000000
 # if __name__ == '__main__':

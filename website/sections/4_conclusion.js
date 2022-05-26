@@ -1,14 +1,14 @@
-let workflow = document.getElementById('workflow')
+let conclusion = document.getElementById('conclusion');
 
-workflow.innerHTML = `
+conclusion.innerHTML = `
 <div class="inner">
 	<h2>Conclusions</h2>
 	<p>
-		Overview summary of results.
+		Overview summary of results.<br>
 
-		Surprising.
+		Surprising.<br>
 
-		Averages
+		Averages<br>
 	</p>
 	<div class="split style1">
 		<section>
@@ -22,8 +22,6 @@ workflow.innerHTML = `
 					<ul class="icons">
 						<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
 						<li><a href="#" class="icon brands fa-youtube"><span class="label">Instagram</span></a></li>
-						<li><a href="#" class="icon brands fa-website"><span class="label">Blog</span></a></li>
-						<li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
 					</ul>
 				</li>
 			</ul>

@@ -1,4 +1,4 @@
-let intro = document.getElementById('introduction')
+let intro = document.getElementById('introduction');
 
 intro.innerHTML = `
 <div class="inner">
